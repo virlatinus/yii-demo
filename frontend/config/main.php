@@ -1,5 +1,6 @@
 <?php
 
+use yii\redis\Session as RedisSession;
 use common\models\User;
 use yii\log\FileTarget;
 use yii\web\UrlManager;
@@ -29,6 +30,8 @@ return [
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
+            'class' => RedisSession::class,
+            'keyPrefix' => 'fe',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

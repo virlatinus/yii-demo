@@ -11,10 +11,16 @@ services:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       # Mount source-code for development
       - ./:/app
+    links:
+      - memcache:memcache
+    depends_on:
+      - memcache
     external_links:
       - mysql
+      - redis
     networks:
       - impartner
+      - yii_demo
 
   backend:
     build: backend
@@ -25,10 +31,21 @@ services:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       # Mount source-code for development
       - ./:/app
+    links:
+      - memcache
+    depends_on:
+      - memcache
     external_links:
       - mysql
+      - redis
     networks:
       - impartner
+      - yii_demo
+
+  memcache:
+    image: memcached:latest
+    networks:
+      - yii_demo
 
 #  mysql:
 #    image: mysql:5.7
@@ -46,6 +63,7 @@ services:
   #    - POSTGRES_PASSWORD=secret
 
 networks:
+  yii_demo:
   impartner:
     name: impartner_default
     external: true
