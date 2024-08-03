@@ -18,7 +18,7 @@ class ContactFormTest extends \Codeception\Test\Unit
             'body' => 'body of current message',
         ];
 
-        verify($model->sendEmail('werner.garcia@devsavant.com'))->notEmpty();
+        verify($model->sendEmail('admin@example.com'))->notEmpty();
 
         // using Yii2 module actions to check email was sent
         $this->tester->seeEmailIsSent();
@@ -26,8 +26,8 @@ class ContactFormTest extends \Codeception\Test\Unit
         /** @var MessageInterface  $emailMessage */
         $emailMessage = $this->tester->grabLastSentEmail();
         verify($emailMessage)->instanceOf('yii\mail\MessageInterface');
-        verify($emailMessage->getTo())->arrayHasKey('werner.garcia@devsavant.com');
-        verify($emailMessage->getFrom())->arrayHasKey('werner.garcia+noreply@gmail.com');
+        verify($emailMessage->getTo())->arrayHasKey('admin@example.com');
+        verify($emailMessage->getFrom())->arrayHasKey('noreply@example.com');
         verify($emailMessage->getReplyTo())->arrayHasKey('tester@example.com');
         verify($emailMessage->getSubject())->equals('very important letter subject');
         verify($emailMessage->toString())->stringContainsString('body of current message');
