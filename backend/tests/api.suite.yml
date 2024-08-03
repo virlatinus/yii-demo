@@ -1,0 +1,11 @@
+actor: ApiTester
+suite_namespace: backend\tests\Api
+step_decorators:
+  - \Codeception\Step\AsJson
+modules:
+    enabled:
+        - REST:
+              url: /api/v1
+              depends: Yii2
+    config:
+        - Yii2

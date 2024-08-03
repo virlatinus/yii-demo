@@ -34,7 +34,8 @@
     "codeception/module-yii2": "^1.1",
     "codeception/module-filesystem": "^3.0",
     "codeception/verify": "^3.2",
-    "codeception/module-webdriver": "^4.0"
+    "codeception/module-webdriver": "^4.0",
+    "codeception/module-rest": "^3.4"
   },
   "autoload": {
     "files": [
@@ -75,7 +76,8 @@
   "scripts": {
     "test": [
       "@test:unit",
-      "@test:functional"
+      "@test:functional",
+      "@test:api"
     ],
     "test:all": [
       "@test:unit",
@@ -91,6 +93,7 @@
       "codecept run -c backend functional",
       "codecept run -c frontend functional"
     ],
+    "test:api": "codecept run -c backend api",
     "test:acceptance": "codecept run -c frontend acceptance"
   }
 }
