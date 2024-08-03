@@ -1,5 +1,11 @@
 ## Yii 2 Demo project using the Advanced Project Template
 
+Services:
+
+- Redis
+- Memcache
+- MySQL
+- nginx
 
 The main difference in this project is that we're using docker-compose.yml version 3.7 
 which uses an existing mysql container in an external network (to reduce the number of running images).
