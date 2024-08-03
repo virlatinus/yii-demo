@@ -1,0 +1,12 @@
+suite_namespace: frontend\tests\acceptance
+actor: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: http://localhost:20080
+            browser: chrome
+            capabilities:
+                goog:chromeOptions:
+                    args: [ "--headless" ]
+        - Yii2:
+            part: init

@@ -1,0 +1,96 @@
+{
+  "name": "virlatinus/yii-demo",
+  "description": "Yii 2 Demo using the Advanced Project Template",
+  "keywords": [
+    "yii2",
+    "framework",
+    "advanced",
+    "project template"
+  ],
+  "homepage": "https://www.yiiframework.com/",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "support": {
+    "source": "https://github.com/virlatinus/yii-demo"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.3.0",
+    "yiisoft/yii2": "^2.0",
+    "yiisoft/yii2-bootstrap5": "^2.0",
+    "yiisoft/yii2-symfonymailer": "^2.0",
+    "symfony/google-mailer": "^7.1"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "yiisoft/yii2-debug": "^2.1",
+    "yiisoft/yii2-gii": "^2.2",
+    "yiisoft/yii2-faker": "^2.0",
+    "phpunit/phpunit": "^11.3",
+    "symfony/browser-kit": "^6.4",
+    "codeception/codeception": "^5.1",
+    "codeception/lib-innerbrowser": "^4.0",
+    "codeception/module-asserts": "^3.0",
+    "codeception/module-yii2": "^1.1",
+    "codeception/module-filesystem": "^3.0",
+    "codeception/verify": "^3.2",
+    "codeception/module-webdriver": "^4.0"
+  },
+  "autoload": {
+    "files": [
+      "common/functions.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "common\\tests\\": [
+        "common/tests/",
+        "common/tests/_support"
+      ],
+      "backend\\tests\\": [
+        "backend/tests/",
+        "backend/tests/_support"
+      ],
+      "frontend\\tests\\": [
+        "frontend/tests/",
+        "frontend/tests/_support"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    },
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "scripts": {
+    "test": [
+      "@test:unit",
+      "@test:functional"
+    ],
+    "test:all": [
+      "@test:unit",
+      "@test:functional",
+      "@test:acceptance"
+    ],
+    "test:unit": [
+      "codecept run -c common unit",
+      "codecept run -c backend unit",
+      "codecept run -c frontend unit"
+    ],
+    "test:functional": [
+      "codecept run -c backend functional",
+      "codecept run -c frontend functional"
+    ],
+    "test:acceptance": "codecept run -c frontend acceptance"
+  }
+}
