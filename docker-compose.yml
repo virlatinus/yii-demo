@@ -19,7 +19,7 @@ services:
       - mysql
       - redis
     networks:
-      - impartner
+      - external_net
       - yii_demo
 
   backend:
@@ -39,7 +39,7 @@ services:
       - mysql
       - redis
     networks:
-      - impartner
+      - external_net
       - yii_demo
 
   memcache:
@@ -64,6 +64,6 @@ services:
 
 networks:
   yii_demo:
-  impartner:
-    name: impartner_default
+  external_net:
+    name: development
     external: true
